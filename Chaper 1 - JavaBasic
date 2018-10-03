@@ -1,0 +1,142 @@
+Chapter 1. 
+
+JAVA BASICS
+
+Object: Is a runtime instance of a class in memory. Represents state of your program.
+Class: Have methods and fields. these are called the members os the class.
+Variables: Hold the state of the program. 
+Methods: Operate on that state.
+Example Class: 
+                1: public class Animal {
+                2: }
+                
+Method signature: Is the full declaration of a method. Example:
+                1: public int numberVisitors(int month)
+                
+Type of Comments.
+1. Single Line Comment 
+  //
+2. Mutilple Line Comment 
+  /*
+  ***
+  */
+3. Javadoc Comment
+   /**
+   * Javadoc multiple-line comment
+   * @author Jeanne and Scott
+   */
+ 
+Classes vs. Files
+
+If you put two classes in the same file, at most one of the classes in the file is allowed to be public. If your have a public class, it needs to match the filename. Example class Animal2 would not compile in a file named Animal.java.
+
+Writing a Main Method
+
+Is the gateway between starup Java Process( managed Java Virtual Machine) and the beginning of the programmer's code. 
+              1: public class Zoo {
+              2: public static void main(String[] args) {
+              3:
+              4: }
+              5:}
+              public: access modifier
+              static: method can be called by just the class name.
+              void: return type. change the program state from started to finished.
+              Parameter String. java.lang.String.objects
+              args : It knows that values that were read in (arguments) when the JVM started.
+              
+              
+To Compile: file must have the extension .java , result is a file of bytecode by the same name but a extension .class.
+ByteCode: Consists of instructions that the JVM knows how to execute.
+
+            public class Zoo {
+             public static void main(String[] args) {
+             System.out.println(args[0]);
+             System.out.println(args[1]);
+            } }
+            
+            If you run this compile: javac Zoo.java and java Zoo Uno Dos, but if you don't pass arguments, java prints a Exception Array Index Out Of Bounds.
+            JDK: Its necessary to compile because include a compiler. You don't need a JDK to run the code.
+            Java class files run on the JVM and run on way on any machine because to have been compiled on.
+            
+            
+            
+           
+~ Understanding Package Declarations and Imports
+
+Wildcards (comodines)
+The * is a wildcard that matches all classes in the package. If you use this, don't slow down your program because the compiler figures out what's actually needs.
+
+Redundant Imports
+Java Lang is automatically imported. 
+You need to record that you only import class names when you use the WildCard.
+
+Naming Conflicts
+The Classes don't have to be unique acrsoss all of Java, so sometimes want to import a class that can be found in a multiple places.
+If class is found i  multiple packages, Java gives a compile error: The type Date is ambigues.
+I your need to Use Two classes with the same name, you cane import fully qualified class name, package and the class name, and use only one import, or two full specify class name.
+
+
+~ Creating a New Package
+
+      C:\temp\packagea\ClassA.java
+      package packagea;
+      public class ClassA {
+      }
+      
+      
+      C:\temp\packageb\ClassB.java
+      package packageb;
+      import packagea.ClassA;
+      public class ClassB {
+       public static void main(String[] args) {
+       ClassA a;
+       System.out.println("Got it");
+       }
+      }
+      
+Commands. javac packagea/ClassA.java packageb/ClassB.java 
+Run.      java packageb.ClassB
+
+~ Creating Objetcs
+Object. Instance of a class.
+a. Constructor.
+Key One: The name of the constructor matches the name of the class, and there's no return type.
+
+Constructor: 
+            public class Chick {
+             public Chick() {
+             System.out.println("in constructor");
+             }
+            }
+NOT Constructor:
+            public void Chick() { } 
+            
+Purpose: Initiliaze fields, other way to initialize field is to do so directly on the line on which they're declared.
+Example:
+               public class Chicken {
+               int numEggs = 0;// initialize on line
+               String name;
+               public Chicken() {
+               name = "Duke";// initialize in constructor
+               } }
+
+Reading to a variable Fild is known as getting it, and writting to a variable known as setting it.
+
+b. Instance Initializer Blocks
+Code between braces is called CODE BLOCK. { }
+Code Blocks are inside a method, these are run when the method id CALLED.
+Code Blocks outside a method, these are called INSTANCE INITIALIZER. (If you want to know about how many initializer, keep in mind pair of braces outside a method.
+
+c. Order Of Initialization
+Rules: 
+1.Fields and instance initiliazer blocks are run in the order in which they appear in the file.
+2.The constructor runs after all fields and instance initializer blocks have run.
+
+Important: YOU CAN'T REFER TO A VARIABLE BEFORE IT HAS BEEN INITIALIZED.
+Example:
+            { System.out.println(name); } // DOES NOT COMPILE
+            private String name = "Fluffy";
+
+
+
+
